@@ -39,15 +39,15 @@ class AddNewCoinViewController: BaseViewController, UITextFieldDelegate, UIPicke
     }
     
     @IBAction func didTapClose(_ sender: Any) {
-        self.dismiss(animated: true)
+        dismiss(animated: true)
     }
     
     @IBAction func didTapSave(_ sender: Any) {
-        if self.numberCoinTextField.text?.isEmpty ?? true{
-            self.showError(message: "Invalid Number")
+        if numberCoinTextField.text?.isEmpty ?? true{
+            showError(message: "Invalid Number")
             return
         }
-        self.showLoadingView()
+        showLoadingView()
         getHistoryCoin(uuid: self.coin?.uuid ?? "") { priceHistory in
             let coins = self.coreDataManager.fetchedCoin(uuid: self.coin?.uuid ?? "", symbol: self.coin?.symbol ?? "")
             if let coinData = coins.first {
